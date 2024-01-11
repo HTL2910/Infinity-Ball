@@ -5,11 +5,13 @@ using UnityEngine;
 public class BallBounce : MonoBehaviour
 {
     private Rigidbody2D rb;
+    [SerializeField] private Transform gameManager;
     //public GameObject ball;
     Vector3 lastVelocity;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("GameManager").transform;
     }
     private void Update()
     {
@@ -32,13 +34,14 @@ public class BallBounce : MonoBehaviour
         {
             rb.velocity = new Vector2(5f, 5f);
         }
-        if (rb.velocity.y <1f && rb.velocity.y> -1f || rb.velocity.x < 1f && rb.velocity.x > -1f)
-        {
-            GameObject gameObj=Instantiate(gameObject, Vector3.zero, Quaternion.identity);
-            gameObj.name = "ball";
-            Destroy(gameObject);
+        //if (rb.velocity.y <1f && rb.velocity.y> -1f || rb.velocity.x < 1f && rb.velocity.x > -1f)
+        //{
+        //    GameObject gameObj=Instantiate(gameObject, Vector3.zero, Quaternion.identity);
+        //    gameObj.name = "ball";
+        //    gameObj.transform.parent = gameManager.transform;
+        //    Destroy(gameObject);
             
-        }
+        //}
 
     }    
 }
