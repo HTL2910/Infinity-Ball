@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4639600465058492886}
   m_Layer: 0
   m_Name: ball
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 99b4725663cf5cf44b9fdc8268220fcb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c30a99a29ed8b864d8e53c632abe71c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

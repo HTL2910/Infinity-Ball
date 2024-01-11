@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;
     private float timerDuration = 600.0f; // 10 minutes in seconds
     private float currentTime;
     void Start()
@@ -34,6 +33,6 @@ public class CountdownTimer : MonoBehaviour
         string minutesString = minutes.ToString("00");
         string secondsString = seconds.ToString("00");
 
-        timerText.text = minutesString + ":" + secondsString;
+        UIManger.Instance.timeText.text = minutesString + ":" + secondsString;
     }
 }

@@ -6,12 +6,14 @@ public class BallSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] private Transform gameManager;
+
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").transform;
     }
     private void Start()
     {
+        UIManger.Instance.countBallText.text = "Count: " + gameManager.transform.childCount;
         InvokeRepeating("Spawn", 5f, 10f);
     }
     private void Spawn()
@@ -20,8 +22,8 @@ public class BallSpawner : MonoBehaviour
         {
             GameObject game=Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
             game.transform.parent = gameManager.transform;
-        }    
-        
+        }
+        UIManger.Instance.countBallText.text = "Count: " + gameManager.transform.childCount;
     }
 
 }
