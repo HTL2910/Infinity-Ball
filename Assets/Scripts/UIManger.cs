@@ -33,7 +33,8 @@ public class UIManger : MonoBehaviour
     }
     private void Start()
     {
-     
+        audioSource.volume= PlayerPrefs.GetFloat("audioVolume", 0.5f);
+        audioSourceGame.volume= PlayerPrefs.GetFloat("musicVolume", 0.5f);
         Dialog.SetActive(false);
         audioSource.clip = clipMove;
         audioSource.Play();
