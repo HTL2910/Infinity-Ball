@@ -20,13 +20,23 @@ public class UIManger : MonoBehaviour
     public TextMeshProUGUI timeTextDialog;
 
     public Button playAgainButton;
+    public Button aceSpeedButton;
+
+    public AudioSource audioSource;
+    public AudioSource audioSourceGame;
+    public AudioClip clipCollider;
+    public AudioClip clipMove;
+    public AudioClip clipGameOver;
     private void Awake()
     {
         Instance = this;
     }
     private void Start()
     {
-       Dialog.SetActive(false);
+     
+        Dialog.SetActive(false);
+        audioSource.clip = clipMove;
+        audioSource.Play();
     }
     public void PlayGame()
     {

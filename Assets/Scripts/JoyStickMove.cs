@@ -5,7 +5,7 @@ using UnityEngine;
 public class JoyStickMove : MonoBehaviour
 {
     public Joystick movementJoySticks;
-    public float playerSpeed;
+    public float playerSpeed=5f;
     private Rigidbody2D rb;
 
     private void Start()
@@ -23,5 +23,15 @@ public class JoyStickMove : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+    }
+    private void Reset()
+    {
+        playerSpeed = 5f;
+        GameObject gameObject = GameObject.Find("Floating Joystick");
+        movementJoySticks = gameObject.GetComponent<FloatingJoystick>();
+    }
+    public void Ace()
+    {
+        playerSpeed = 10f;
     }
 }

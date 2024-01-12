@@ -15,17 +15,21 @@ public class Player : MonoBehaviour
         if(collision.transform.CompareTag("Enemy"))
         {
             countHealth--;
+
             UIHeart();
             if (countHealth<=0)
             {
+                UIManger.Instance.audioSourceGame.PlayOneShot(UIManger.Instance.clipGameOver);
                 Destroy(gameObject);
                 UIManger.Instance.Dialog.SetActive(true);
                 UIManger.Instance.timeTextDialog.text = UIManger.Instance.timeText.text;
                 UIManger.Instance.countTextDialog.text = UIManger.Instance.countBallText.text;
                 Time.timeScale = 0;
+                
             }
             else
             {
+                UIManger.Instance.audioSourceGame.PlayOneShot(UIManger.Instance.clipCollider);
                 gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 Invoke("ChangedColorRed", 0.5f);
                 
