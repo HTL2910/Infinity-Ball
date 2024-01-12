@@ -18,6 +18,9 @@ public class UIManger : MonoBehaviour
     public GameObject Dialog;
     public TextMeshProUGUI countTextDialog;
     public TextMeshProUGUI timeTextDialog;
+    public TextMeshProUGUI countTextDialogMax;
+    public TextMeshProUGUI timeTextDialogMax;
+
 
     public Button playAgainButton;
     public Button aceSpeedButton;
@@ -35,6 +38,7 @@ public class UIManger : MonoBehaviour
     {
         audioSource.volume= PlayerPrefs.GetFloat("audioVolume", 0.5f);
         audioSourceGame.volume= PlayerPrefs.GetFloat("musicVolume", 0.5f);
+
         Dialog.SetActive(false);
         audioSource.clip = clipMove;
         audioSource.Play();

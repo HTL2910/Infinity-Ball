@@ -9,6 +9,7 @@ public class CountdownTimer : MonoBehaviour
     void Start()
     {
         currentTime = 0f;
+        Time(currentTime, UIManger.Instance.timeText);
         StartCoroutine(UpdateTimer());
     }
 
@@ -27,12 +28,25 @@ public class CountdownTimer : MonoBehaviour
 
     void UpdateTimerText()
     {
-        int minutes = Mathf.FloorToInt(currentTime / 60);
-        int seconds = Mathf.FloorToInt(currentTime % 60);
+        Time(currentTime, UIManger.Instance.timeText);
+       
+        float maxTime = PlayerPrefs.GetFloat("maxTime", 0f);
+        if(maxTime<currentTime)
+        {
+            PlayerPrefs.SetFloat("maxTime", currentTime);
+        }   
+        float newMaxtime = PlayerPrefs.GetFloat("maxTime", 0f);
+        Time(newMaxtime, UIManger.Instance.timeTextDialogMax);
+        Debug.Log(maxTime);
+        Debug.Log(currentTime);
+    }
+    private void Time(float time,TextMeshProUGUI text)
+    {
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
 
         string minutesString = minutes.ToString("00");
         string secondsString = seconds.ToString("00");
-
-        UIManger.Instance.timeText.text = minutesString + ":" + secondsString;
+        text.text = minutesString + ":" + secondsString;
     }
 }
