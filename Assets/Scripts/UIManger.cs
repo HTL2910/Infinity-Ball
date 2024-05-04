@@ -52,4 +52,8 @@ public class UIManger : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
     }
+    public IEnumerator Delay(float time)
+    {
+        yield return new WaitForSeconds(time);
+    }    
 }

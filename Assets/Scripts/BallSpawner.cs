@@ -5,16 +5,12 @@ using UnityEngine;
 public class BallSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject ballPrefab;
-    [SerializeField] private Transform gameManager;
     int maxCountBall;
-
-    private void Awake()
-    {
-        gameManager = GameObject.Find("GameManager").transform;
-    }
+    [SerializeField] private Transform ballsEnemy;
+   
     private void Start()
     {
-        UIManger.Instance.countBallText.text = "Count: " + gameManager.transform.childCount;
+        UIManger.Instance.countBallText.text = "Count: " + ballsEnemy.transform.childCount;
 
         maxCountBall = PlayerPrefs.GetInt("maxCount", 0);
         UIManger.Instance.countTextDialogMax.text = "Count: " + maxCountBall;
@@ -22,17 +18,19 @@ public class BallSpawner : MonoBehaviour
     }
     private void Spawn()
     { 
-        if(gameManager.transform.childCount<50)
+        if(ballsEnemy.transform.childCount<50)
         {
             GameObject game=Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
-            game.transform.parent = gameManager.transform;
+            game.transform.position=gameObject.transform.position;
+            game.transform.parent = ballsEnemy.transform;
         }
-        UIManger.Instance.countBallText.text = "Count: " + gameManager.transform.childCount;
-        if(maxCountBall<gameManager.transform.childCount)
+        UIManger.Instance.countBallText.text = "Count: " + ballsEnemy.transform.childCount;
+        if(maxCountBall<ballsEnemy.transform.childCount)
         {
-            PlayerPrefs.SetInt("maxCount",gameManager.transform.childCount);
+            PlayerPrefs.SetInt("maxCount", ballsEnemy.transform.childCount);
         }
         UIManger.Instance.countTextDialogMax.text = "Count: " + PlayerPrefs.GetInt("maxCount", 0);
+        PlayerPrefs.Save();
     }
 
 }
