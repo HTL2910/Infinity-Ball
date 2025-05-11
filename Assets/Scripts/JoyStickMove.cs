@@ -16,12 +16,12 @@ public class JoyStickMove : MonoBehaviour
     {
         if(movementJoySticks.Direction.y!=0)
         {
-            rb.velocity=new Vector2(movementJoySticks.Direction.x*playerSpeed,movementJoySticks.Direction.y*playerSpeed);
+            rb.linearVelocity=new Vector2(movementJoySticks.Direction.x*playerSpeed,movementJoySticks.Direction.y*playerSpeed);
 
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
     private void Reset()

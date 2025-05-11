@@ -15,24 +15,24 @@ public class BallBounce : MonoBehaviour
     }
     private void Update()
     {
-        lastVelocity = rb.velocity;
+        lastVelocity = rb.linearVelocity;
         CheckVelocity();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var speed=lastVelocity.magnitude*1.025f;
         var direction = Vector3.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
-        rb.velocity = direction * Mathf.Max(speed, 0f);
+        rb.linearVelocity = direction * Mathf.Max(speed, 0f);
     }
     private void CheckVelocity()
     {
-        if(rb.velocity.x >15f || rb.velocity.x<-15f )
+        if(rb.linearVelocity.x >15f || rb.linearVelocity.x<-15f )
         {
-            rb.velocity = new Vector2(5f,5f);
+            rb.linearVelocity = new Vector2(5f,5f);
         }
-        if (rb.velocity.y > 15f || rb.velocity.y < -15f)
+        if (rb.linearVelocity.y > 15f || rb.linearVelocity.y < -15f)
         {
-            rb.velocity = new Vector2(5f, 5f);
+            rb.linearVelocity = new Vector2(5f, 5f);
         }
         //if (rb.velocity.y <1f && rb.velocity.y> -1f || rb.velocity.x < 1f && rb.velocity.x > -1f)
         //{

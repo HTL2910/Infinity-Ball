@@ -61,7 +61,7 @@ public class DragAndShoot : MonoBehaviour
             // if (EventSystem.current.currentSelectedGameObject) return;  //ENABLE THIS IF YOU DONT WANT TO IGNORE UI
             MouseDrag();
 
-            if (shootWhileMoving) rb.velocity /= (1 + slowMotion);
+            if (shootWhileMoving) rb.linearVelocity /= (1 + slowMotion);
 
         }
 
@@ -75,9 +75,9 @@ public class DragAndShoot : MonoBehaviour
         if (shootWhileMoving)
             return;
 
-        if (rb.velocity.magnitude < 0.7f)
+        if (rb.linearVelocity.magnitude < 0.7f)
         {
-            rb.velocity = new Vector2(0, 0); //ENABLE THIS IF YOU WANT THE BALL TO STOP IF ITS MOVING SO SLOW
+            rb.linearVelocity = new Vector2(0, 0); //ENABLE THIS IF YOU WANT THE BALL TO STOP IF ITS MOVING SO SLOW
             canShoot = true;
         }
     }
@@ -252,7 +252,7 @@ public class DragAndShoot : MonoBehaviour
     public void Shoot()
     {
         canShoot = false;
-        rb.velocity = transform.right * shootPower;
+        rb.linearVelocity = transform.right * shootPower;
     }
 
 
